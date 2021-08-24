@@ -215,6 +215,8 @@ if(analogDigital == 0){
   Z=AnalogDigitizeBz();
 }
 else if(analogDigital == 1){
+  
+//This works (separate write/read):
 writeRegisters(settingX_write);   //Write to request X readout
 X=readRegisters(settingX_read);   //Read out X
 writeRegisters(settingY_write);   //Write to request Y readout
@@ -223,6 +225,14 @@ writeRegisters(settingZ_write);   //Write to request Z readout
 Z=readRegisters(settingZ_read);   //Read out Z
 writeRegisters(settingT_write);   //Write to request T readout
 T=readRegisters(settingT_read);   //Read out T
+
+//This does NOT work (read/write in the same SPI transaction):
+//X=readWriteRegisters(settingY_readwrite);
+//Y=readWriteRegisters(settingZ_readwrite);
+//Z=readWriteRegisters(settingT_readwrite);
+//T=readWriteRegisters(settingX_readwrite);
+
+
 }
   delay(100);
   printValues();
