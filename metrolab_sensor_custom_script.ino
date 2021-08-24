@@ -201,7 +201,7 @@ void setup() {
   else if(analogDigital == 1){
   MiscConfigureDigitalModePin();
   SPI.begin();
-  delay(100);
+  delay(100); //Wait for SPI to start
   writeRegisters(initSettingRegister00);
   writeRegisters(initSettingRegister01);
   writeRegisters(initSettingRegister10);
@@ -215,14 +215,14 @@ if(analogDigital == 0){
   Z=AnalogDigitizeBz();
 }
 else if(analogDigital == 1){
-writeRegisters(settingX_write);
-X=readRegisters(settingX_read);
-writeRegisters(settingY_write);
-Y=readRegisters(settingY_read);
-writeRegisters(settingZ_write);
-Z=readRegisters(settingZ_read);
-writeRegisters(settingT_write);
-T=readRegisters(settingT_read);
+writeRegisters(settingX_write);   //Write to request X readout
+X=readRegisters(settingX_read);   //Read out X
+writeRegisters(settingY_write);   //Write to request Y readout
+Y=readRegisters(settingY_read);   //Read out Y
+writeRegisters(settingZ_write);   //Write to request Z readout
+Z=readRegisters(settingZ_read);   //Read out Z
+writeRegisters(settingT_write);   //Write to request T readout
+T=readRegisters(settingT_read);   //Read out T
 }
   delay(100);
   printValues();
